@@ -9,9 +9,10 @@
 <meta content="Karina Varela and Otávio Santana" name="author"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.4.2, mkdocs-material-8.3.8" name="generator"/>
-<title>Action 1: Bookstore - DDD in Action: Strategies and tactics for Java solutions</title>
+<title>3rd Action, the Movie: Establishing Boundaries and Context Mapping - DDD in Action: Strategies and tactics for Java solutions</title>
 <link href="../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<style>:root{--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 17a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H9.46c.35.61.54 1.3.54 2h10v11h-9v2m4-10v2H9v13H7v-6H5v6H3v-8H1.5V9a2 2 0 0 1 2-2H15M8 4a2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2Z"/></svg>');--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m13.13 22.19-1.63-3.83c1.57-.58 3.04-1.36 4.4-2.27l-2.77 6.1M5.64 12.5l-3.83-1.63 6.1-2.77C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39S16.66.269 11 5.93c-2.19 2.19-3.5 4.6-4.35 6.71-.28.75-.09 1.57.46 2.13l2.13 2.12c.55.56 1.37.74 2.12.46A19.1 19.1 0 0 0 18.07 13c5.66-5.66 3.54-10.61 3.54-10.61m-7.07 7.07c-.78-.78-.78-2.05 0-2.83s2.05-.78 2.83 0c.77.78.78 2.05 0 2.83-.78.78-2.05.78-2.83 0m-5.66 7.07-1.41-1.41 1.41 1.41M6.24 22l3.64-3.64c-.34-.09-.67-.24-.97-.45L4.83 22h1.41M2 22h1.41l4.77-4.76-1.42-1.41L2 20.59V22m0-2.83 4.09-4.08c-.21-.3-.36-.62-.45-.97L2 17.76v1.41Z"/></svg>');}</style>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
 <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
@@ -24,7 +25,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#action-1-bookstore">
+<a class="md-skip" href="#3rd-action-the-movie-establishing-boundaries-and-context-mapping">
           Skip to content
         </a>
 </div>
@@ -48,7 +49,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Action 1: Bookstore
+              3rd Action, the Movie: Establishing Boundaries and Context Mapping
             
           </span>
 </div>
@@ -140,14 +141,24 @@
         Preparing your environment
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01_action/">
+        1st Action, the Bookstore: Getting Started with Domain Storytelling
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02_action/">
+        2nd Action, the Taxi: a Domain Storytelling exercise
+      </a>
+</li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
-          Action 1: Bookstore
+          3rd Action, the Movie: Establishing Boundaries and Context Mapping
           <span class="md-nav__icon md-icon"></span>
 </label>
 <a class="md-nav__link md-nav__link--active" href="./">
-        Action 1: Bookstore
+        3rd Action, the Movie: Establishing Boundaries and Context Mapping
       </a>
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">
@@ -156,18 +167,33 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#exercise-goals">
+    Exercise goals
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#scenario">
     Scenario
   </a>
-<nav aria-label="Scenario" class="md-nav">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#practicing-domain-storytelling">
+    Practicing Domain Storytelling
+  </a>
+<nav aria-label="Practicing Domain Storytelling" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#goals">
-    Goals
+<a class="md-nav__link" href="#getting-started">
+    Getting Started
   </a>
 </li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#a-story-becomes-code-creating-the-java-service">
+    A Story becomes Code: Creating the Java service
+  </a>
 </li>
 </ul>
 </nav>
@@ -187,18 +213,33 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#exercise-goals">
+    Exercise goals
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#scenario">
     Scenario
   </a>
-<nav aria-label="Scenario" class="md-nav">
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#practicing-domain-storytelling">
+    Practicing Domain Storytelling
+  </a>
+<nav aria-label="Practicing Domain Storytelling" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#goals">
-    Goals
+<a class="md-nav__link" href="#getting-started">
+    Getting Started
   </a>
 </li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#a-story-becomes-code-creating-the-java-service">
+    A Story becomes Code: Creating the Java service
+  </a>
 </li>
 </ul>
 </nav>
@@ -207,26 +248,61 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="action-1-bookstore"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.</span> Action 1: Bookstore</h1>
-<p>In this exercise you can validate and practice your knowledge of the following concepts:</p>
-<p>WIP</p>
-<h2 id="scenario"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.1</span> Scenario</h2>
-<p>WIP </p>
-<h3 id="goals"><span class="enumerate-headings-plugin enumerate-heading-plugin">2.1.1</span> Goals</h3>
-<p>WIP</p>
-<ul>
-<li>If you can successfully execute the above items, it means you accomplished all this challenge goals!</li>
-</ul>
-<div class="admonition success">
-<p class="admonition-title">Congratulations!</p>
+<h1 id="3rd-action-the-movie-establishing-boundaries-and-context-mapping"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.</span> 3rd Action, the Movie: Establishing Boundaries and Context Mapping</h1>
+<p>In this exercise you will see how the concepts of <strong>bounded context</strong> and <strong>context mapping</strong> can be applied in real life. </p>
+<div class="admonition note">
+<p class="admonition-title">Roll up your sleeves, and get to action!</p>
+<p>It's time to practice what you have learned and get your hands. Roll up your sleeves and let's get to action!</p>
 </div>
+<h2 id="exercise-goals"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.1</span> Exercise goals</h2>
+<p>WIP</p>
+<h2 id="scenario"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.2</span> Scenario</h2>
+<p><strong>Business Goal:</strong> As a moviegoer, I want to go to the movie theater, buy a ticket, maybe get some snacks and drinks, and watch the chosen movie.</p>
 <hr/>
+<h2 id="practicing-domain-storytelling"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.3</span> Practicing Domain Storytelling</h2>
+<p>Use <a href="https://egon.io/">Egon</a> to map this story while you explore it using Domain Storytelling.</p>
+<p>The outcome of this practice should be a <strong>diagram</strong> representation of the <strong>Movie</strong> use case and its respective <strong>java service</strong>.</p>
+<h3 id="getting-started"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.3.1</span> Getting Started</h3>
+<div class="admonition tip">
+<p class="admonition-title">TIP: Shedding light on solutions</p>
+<p>... </p>
+</div>
+<ol>
+<li>Using your browser, access <a href="http://egon.io">Egon.io</a></li>
+<li>Import the diagram located under <code>ddd-workshop-labs/storytelling/03-movies.dst</code></li>
+<li>Complete the domain by exploring the use case, asking questions or discussing with other attendees;</li>
+</ol>
+<p>Make sure you complete the following tasks:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> Describe in the diagram, the <code>sequence order</code> of each action. <ul>
+<li><em>To change a group sequence, you can double-click on the association arrow and set your input data;</em></li>
+</ul>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> Are there optional items? Add a <code>text annotation</code> to highlight this characteristic.
+    <img alt="03-text-annotation-icon.png" src="../images/03-text-annotation-icon.png"/></p>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> #WIP</p>
+</li>
+</ul>
+<p>Once you're satisfied with the domain map, and you feel like it covers the use case story accordingly, you are ready to
+start designing you Java service.</p>
+<p>Our next step is to practice the modeling of the application, matching the implementation with the domain exploration details.</p>
+<hr/>
+<h2 id="a-story-becomes-code-creating-the-java-service"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.4</span> A Story becomes Code: Creating the Java service</h2>
+<ol>
+<li>In the <code>ddd-workshop-labs</code> folder, locate and open the project <code>03-movies</code> using your chosen Java IDE;</li>
+</ol>
+<h1 id="wip"><span class="enumerate-headings-plugin enumerate-heading-plugin">5.</span> WIP</h1>
+<p>Here are some examples and ideas to help you get started:</p>
+<p>These insights should help you understand what are the expected classes to have, methods and associations.</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-21</span>
 </small>
 </div>
 </article>
@@ -239,7 +315,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: Preparing your environment" class="md-footer__link md-footer__link--prev" href="../00_environment/" rel="prev">
+<a aria-label="Previous: 2nd Action, the Taxi: a Domain Storytelling exercise" class="md-footer__link md-footer__link--prev" href="../02_action/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
 </div>
@@ -248,7 +324,7 @@
 <span class="md-footer__direction">
                 Previous
               </span>
-              Preparing your environment
+              2nd Action, the Taxi: a Domain Storytelling exercise
             </div>
 </div>
 </a>
