@@ -191,8 +191,8 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#a-story-becomes-code-creating-the-java-service">
-    A Story becomes Code: Creating the Java service
+<a class="md-nav__link" href="#from-story-to-code-the-movie-service">
+    From Story to Code: the Movie service
   </a>
 </li>
 </ul>
@@ -237,8 +237,8 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#a-story-becomes-code-creating-the-java-service">
-    A Story becomes Code: Creating the Java service
+<a class="md-nav__link" href="#from-story-to-code-the-movie-service">
+    From Story to Code: the Movie service
   </a>
 </li>
 </ul>
@@ -274,29 +274,87 @@
 </ol>
 <p>Make sure you complete the following tasks:</p>
 <ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> Some actions are certainly missing in this diagram. Which actions should be mapped for the <code>moviegoer</code> that are not represented? </li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> Describe in the diagram, the <code>sequence order</code> of each action. <ul>
 <li><em>To change a group sequence, you can double-click on the association arrow and set your input data;</em></li>
 </ul>
 </li>
-<li class="task-list-item">
-<p><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> Are there optional items? Add a <code>text annotation</code> to highlight this characteristic.
-    <img alt="03-text-annotation-icon.png" src="../images/03-text-annotation-icon.png"/></p>
-</li>
-<li class="task-list-item">
-<p><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> #WIP</p>
-</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> Are there optional items? Add a <code>text annotation</code> to highlight this characteristic.
+    <img alt="03-text-annotation-icon.png" src="../images/03-text-annotation-icon.png"/></li>
 </ul>
 <p>Once you're satisfied with the domain map, and you feel like it covers the use case story accordingly, you are ready to
 start designing you Java service.</p>
 <p>Our next step is to practice the modeling of the application, matching the implementation with the domain exploration details.</p>
 <hr/>
-<h2 id="a-story-becomes-code-creating-the-java-service"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.4</span> A Story becomes Code: Creating the Java service</h2>
+<h2 id="from-story-to-code-the-movie-service"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.4</span> From Story to Code: the Movie service</h2>
 <ol>
 <li>In the <code>ddd-workshop-labs</code> folder, locate and open the project <code>03-movies</code> using your chosen Java IDE;</li>
+<li>Open the test class <code>expert.os.workshop.ddd.cinema.OrderTest</code>; </li>
+<li>Now evaluate the following items:</li>
+<li>Is this test is validating the user story previously described? If not, what are your ideas to adjust it?</li>
+<li>In this unit test, we can notice the following validation:</li>
 </ol>
-<h1 id="wip"><span class="enumerate-headings-plugin enumerate-heading-plugin">5.</span> WIP</h1>
-<p>Here are some examples and ideas to help you get started:</p>
-<p>These insights should help you understand what are the expected classes to have, methods and associations.</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="w">    </span><span class="n">Movie</span><span class="w"> </span><span class="n">movie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Movie</span><span class="p">(</span><span class="s">"Matrix"</span><span class="p">,</span><span class="w"> </span><span class="n">Year</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">1999</span><span class="p">));</span><span class="w"> </span><span class="c1">//(1)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="n">Product</span><span class="w"> </span><span class="n">ticket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Ticket</span><span class="p">(</span><span class="n">movie</span><span class="p">,</span><span class="w"> </span><span class="n">Money</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">currency</span><span class="p">));</span><span class="w"> </span><span class="c1">//(2)</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="n">Product</span><span class="w"> </span><span class="n">popcorn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Food</span><span class="p">(</span><span class="s">"popcorn"</span><span class="p">,</span><span class="w"> </span><span class="n">Money</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="n">currency</span><span class="p">));</span><span class="w">  </span><span class="c1">//(3)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Order</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">moviegoer</span><span class="p">);</span><span class="w">    </span><span class="c1">//(4)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="n">order</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">ticket</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="n">order</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">popcorn</span><span class="p">);</span><span class="w"> </span><span class="c1">//(5)!</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="n">MonetaryAmount</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="na">total</span><span class="p">();</span><span class="w"> </span><span class="c1">//(6)</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">    </span><span class="n">Assertions</span><span class="p">.</span><span class="na">assertThat</span><span class="p">(</span><span class="n">total</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">            </span><span class="p">.</span><span class="na">isEqualTo</span><span class="p">(</span><span class="n">Money</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="n">currency</span><span class="p">));</span><span class="w"> </span><span class="c1">//(7)</span>
+</span></code></pre></div></td></tr></table></div>
+<ol>
+<li>Creates the <code>Movie</code> Matrix, from 1999;</li>
+<li>The <code>Ticket</code> for this <code>Movie</code> costs $10;</li>
+<li>The <code>Food</code> available to be bought is a popcorn, and it costs $15;</li>
+<li>The <code>Moviegoer</code> creates a new order; </li>
+<li>This person's <code>Order</code> includes a <code>Ticket</code> for Matrix and his snack, the popcorn.</li>
+<li>The <code>Moviegoer</code> needs to pay for the total amount of this order;</li>
+<li>Assures the total <code>Order</code> cost is compliant to the business rules; </li>
+</ol>
+<p>The test validates one of the paths of our storytelling: a user should be able to acquire movie theater tickets
+and snacks in order to watch the movie.</p>
+<p>Due to the domain exploration, you probably feel comfortable when reading this text - a result of 
+the usage of ubiquitous language across business conversations and the technology scope.</p>
+<p>Now, before finishing this project's implementation, navigate through the project and notice the following details:</p>
+<ol>
+<li>The products sold by this movie theater are defined by the <code>Interface</code> named <code>Product</code>. 
+<div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">record</span> <span class="nc">Food</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">MonetaryAmount</span><span class="w"> </span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">record</span> <span class="nc">Ticket</span><span class="w"> </span><span class="p">(</span><span class="n">Movie</span><span class="w"> </span><span class="n">movie</span><span class="p">,</span><span class="w"> </span><span class="n">MonetaryAmount</span><span class="w"> </span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div></li>
+<li>
+<p>Entities such as <code>Moviegoer</code> and <code>Movie</code> are mapped with <code>org.jmolecules.ddd.annotation.@Entity</code>.   </p>
+</li>
+<li>
+<p>Because we're relying on OOP abstraction, in the <code>Order</code> class, adding a new product is really simple to write, understand and maintain:</p>
+</li>
+</ol>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">Product</span><span class="w"> </span><span class="n">product</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">//(1)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="n">Objects</span><span class="p">.</span><span class="na">requireNonNull</span><span class="p">(</span><span class="n">product</span><span class="p">,</span><span class="s">"product is required"</span><span class="p">);</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">products</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">product</span><span class="p">);</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<ol>
+<li>If new products are made available, the impacts on the <code>Order</code> class should be minimal to none;</li>
+</ol>
+<hr/>
+<p>Your task is to wrap up the implementation of this project.</p>
 <hr/>
 <div class="md-source-file">
 <small>
@@ -343,7 +401,7 @@ start designing you Java service.</p>
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "..", "features": ["navigation.indexes", "navigation.instant", "navigation.tracking", "navigation.prune", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script id="__config" type="application/json">{"base": "..", "features": ["navigation.indexes", "navigation.instant", "navigation.tracking", "navigation.prune", "toc.follow", "navigation.top", "content.code.annotate"], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.0238f547.min.js"></script>
 </body>
 </html>

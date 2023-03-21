@@ -252,28 +252,28 @@
 <li>Command line (terminal). <em>If using Windows, PowerShell is recommended;</em></li>
 <li>REST client tools like cURL or postman <em>(Optional)</em>;</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>java<span class="w"> </span>-version
-<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>mvn<span class="w"> </span>-version
-<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>git<span class="w"> </span>--version
-</code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>java<span class="w"> </span>-version
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>mvn<span class="w"> </span>-version
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>git<span class="w"> </span>--version
+</span></code></pre></div>
 <p>To validate your environment, confirm you have as an output of the commands above working:
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>$<span class="w"> </span>java<span class="w"> </span>-version
-<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>openjdk<span class="w"> </span>version<span class="w"> </span><span class="s2">"17.0.6"</span><span class="w"> </span><span class="m">2023</span>-01-17
-<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>OpenJDK<span class="w"> </span>Runtime<span class="w"> </span>Environment<span class="w"> </span>Temurin-17.0.6+10<span class="w"> </span><span class="o">(</span>build<span class="w"> </span><span class="m">17</span>.0.6+10<span class="o">)</span>
-<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>OpenJDK<span class="w"> </span><span class="m">64</span>-Bit<span class="w"> </span>Server<span class="w"> </span>VM<span class="w"> </span>Temurin-17.0.6+10<span class="w"> </span><span class="o">(</span>build<span class="w"> </span><span class="m">17</span>.0.6+10,<span class="w"> </span>mixed<span class="w"> </span>mode<span class="o">)</span>
-<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a>
-<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a>
-<a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a>$<span class="w"> </span>mvn<span class="w"> </span>-version
-<a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a>Apache<span class="w"> </span>Maven<span class="w"> </span><span class="m">3</span>.9.0<span class="w"> </span><span class="o">(</span>9b58d2bad23a66be161c4664ef21ce219c2c8584<span class="o">)</span>
-<a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a>Maven<span class="w"> </span>home:<span class="w"> </span>/opt/homebrew/Cellar/maven/3.9.0/libexec
-<a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a>Java<span class="w"> </span>version:<span class="w"> </span><span class="m">19</span>.0.2,<span class="w"> </span>vendor:<span class="w"> </span>Homebrew,<span class="w"> </span>runtime:<span class="w"> </span>/opt/homebrew/Cellar/openjdk/19.0.2/libexec/openjdk.jdk/Contents/Home
-<a href="#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a>Default<span class="w"> </span>locale:<span class="w"> </span>en_BR,<span class="w"> </span>platform<span class="w"> </span>encoding:<span class="w"> </span>UTF-8
-<a href="#__codelineno-1-12" id="__codelineno-1-12" name="__codelineno-1-12"></a>OS<span class="w"> </span>name:<span class="w"> </span><span class="s2">"mac os x"</span>,<span class="w"> </span>version:<span class="w"> </span><span class="s2">"13.0.1"</span>,<span class="w"> </span>arch:<span class="w"> </span><span class="s2">"aarch64"</span>,<span class="w"> </span>family:<span class="w"> </span><span class="s2">"mac"</span>
-<a href="#__codelineno-1-13" id="__codelineno-1-13" name="__codelineno-1-13"></a>
-<a href="#__codelineno-1-14" id="__codelineno-1-14" name="__codelineno-1-14"></a>
-<a href="#__codelineno-1-15" id="__codelineno-1-15" name="__codelineno-1-15"></a>$<span class="w"> </span>git<span class="w"> </span>--version
-<a href="#__codelineno-1-16" id="__codelineno-1-16" name="__codelineno-1-16"></a>git<span class="w"> </span>version<span class="w"> </span><span class="m">2</span>.37.1<span class="w"> </span><span class="o">(</span>Apple<span class="w"> </span>Git-137.1<span class="o">)</span>
-</code></pre></div></p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>$<span class="w"> </span>java<span class="w"> </span>-version
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>openjdk<span class="w"> </span>version<span class="w"> </span><span class="s2">"17.0.6"</span><span class="w"> </span><span class="m">2023</span>-01-17
+</span><span id="__span-1-3"><a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>OpenJDK<span class="w"> </span>Runtime<span class="w"> </span>Environment<span class="w"> </span>Temurin-17.0.6+10<span class="w"> </span><span class="o">(</span>build<span class="w"> </span><span class="m">17</span>.0.6+10<span class="o">)</span>
+</span><span id="__span-1-4"><a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>OpenJDK<span class="w"> </span><span class="m">64</span>-Bit<span class="w"> </span>Server<span class="w"> </span>VM<span class="w"> </span>Temurin-17.0.6+10<span class="w"> </span><span class="o">(</span>build<span class="w"> </span><span class="m">17</span>.0.6+10,<span class="w"> </span>mixed<span class="w"> </span>mode<span class="o">)</span>
+</span><span id="__span-1-5"><a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a>$<span class="w"> </span>mvn<span class="w"> </span>-version
+</span><span id="__span-1-8"><a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a>Apache<span class="w"> </span>Maven<span class="w"> </span><span class="m">3</span>.9.0<span class="w"> </span><span class="o">(</span>9b58d2bad23a66be161c4664ef21ce219c2c8584<span class="o">)</span>
+</span><span id="__span-1-9"><a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a>Maven<span class="w"> </span>home:<span class="w"> </span>/opt/homebrew/Cellar/maven/3.9.0/libexec
+</span><span id="__span-1-10"><a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a>Java<span class="w"> </span>version:<span class="w"> </span><span class="m">19</span>.0.2,<span class="w"> </span>vendor:<span class="w"> </span>Homebrew,<span class="w"> </span>runtime:<span class="w"> </span>/opt/homebrew/Cellar/openjdk/19.0.2/libexec/openjdk.jdk/Contents/Home
+</span><span id="__span-1-11"><a href="#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a>Default<span class="w"> </span>locale:<span class="w"> </span>en_BR,<span class="w"> </span>platform<span class="w"> </span>encoding:<span class="w"> </span>UTF-8
+</span><span id="__span-1-12"><a href="#__codelineno-1-12" id="__codelineno-1-12" name="__codelineno-1-12"></a>OS<span class="w"> </span>name:<span class="w"> </span><span class="s2">"mac os x"</span>,<span class="w"> </span>version:<span class="w"> </span><span class="s2">"13.0.1"</span>,<span class="w"> </span>arch:<span class="w"> </span><span class="s2">"aarch64"</span>,<span class="w"> </span>family:<span class="w"> </span><span class="s2">"mac"</span>
+</span><span id="__span-1-13"><a href="#__codelineno-1-13" id="__codelineno-1-13" name="__codelineno-1-13"></a>
+</span><span id="__span-1-14"><a href="#__codelineno-1-14" id="__codelineno-1-14" name="__codelineno-1-14"></a>
+</span><span id="__span-1-15"><a href="#__codelineno-1-15" id="__codelineno-1-15" name="__codelineno-1-15"></a>$<span class="w"> </span>git<span class="w"> </span>--version
+</span><span id="__span-1-16"><a href="#__codelineno-1-16" id="__codelineno-1-16" name="__codelineno-1-16"></a>git<span class="w"> </span>version<span class="w"> </span><span class="m">2</span>.37.1<span class="w"> </span><span class="o">(</span>Apple<span class="w"> </span>Git-137.1<span class="o">)</span>
+</span></code></pre></div></p>
 <h2 id="prepare-your-working-directory"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.2</span> Prepare your working directory</h2>
 <p>To get started with the labs, first you need to clone the projects used in the exercises and have it available in your 
 local development environment.</p>
@@ -282,10 +282,10 @@ local development environment.</p>
 <p>The guided exercises are built on top of quickstart projects, a foundation set of preconfigured projects.</p>
 </div>
 <p>To get the foundation projects and build them, execute: </p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ultimate-engineer/ddd-workshop-labs
-<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nb">cd</span><span class="w"> </span>ddd-workshop-labs
-<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>mvn<span class="w"> </span>clean<span class="w"> </span>package
-</code></pre></div>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ultimate-engineer/ddd-workshop-labs
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="nb">cd</span><span class="w"> </span>ddd-workshop-labs
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>mvn<span class="w"> </span>clean<span class="w"> </span>package
+</span></code></pre></div>
 <p>The build and packaging should complete successfully.</p>
 <h2 id="using-egon-for-domain-modeling"><span class="enumerate-headings-plugin enumerate-heading-plugin">1.3</span> Using Egon for Domain Modeling</h2>
 <p>In this workshop, you will use Egon.io to model the domain and its elements throughout the exercises. </p>
@@ -371,7 +371,7 @@ See details below:</p>
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "..", "features": ["navigation.indexes", "navigation.instant", "navigation.tracking", "navigation.prune", "toc.follow", "navigation.top"], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script id="__config" type="application/json">{"base": "..", "features": ["navigation.indexes", "navigation.instant", "navigation.tracking", "navigation.prune", "toc.follow", "navigation.top", "content.code.annotate"], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
 <script src="../assets/javascripts/bundle.0238f547.min.js"></script>
 </body>
 </html>
