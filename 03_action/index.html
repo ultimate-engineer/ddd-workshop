@@ -195,6 +195,54 @@
     From Story to Code: the Movie service
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#observe-and-learn">
+    Observe and learn
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing-the-movie-service">
+    Testing the Movie Service
+  </a>
+<nav aria-label="Testing the Movie Service" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#expanding-the-implementation">
+    Expanding the implementation
+  </a>
+<nav aria-label="Expanding the implementation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#next-step-choosing-the-next-implementation">
+    Next step: choosing the next implementation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#next-step-choosing-the-next-implementation_1">
+    Next step: choosing the next implementation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enhancement-allow-customers-to-buy-beverages">
+    Enhancement: Allow customers to buy beverages
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adding-the-beverage-model">
+    Adding the beverage model
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#congratulations">
+    Congratulations!
+  </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -241,6 +289,54 @@
     From Story to Code: the Movie service
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#observe-and-learn">
+    Observe and learn
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing-the-movie-service">
+    Testing the Movie Service
+  </a>
+<nav aria-label="Testing the Movie Service" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#expanding-the-implementation">
+    Expanding the implementation
+  </a>
+<nav aria-label="Expanding the implementation" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#next-step-choosing-the-next-implementation">
+    Next step: choosing the next implementation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#next-step-choosing-the-next-implementation_1">
+    Next step: choosing the next implementation
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enhancement-allow-customers-to-buy-beverages">
+    Enhancement: Allow customers to buy beverages
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#adding-the-beverage-model">
+    Adding the beverage model
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#congratulations">
+    Congratulations!
+  </a>
+</li>
 </ul>
 </nav>
 </div>
@@ -255,7 +351,11 @@
 <p>It's time to practice what you have learned and get your hands. Roll up your sleeves and let's get to action!</p>
 </div>
 <h2 id="exercise-goals"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.1</span> Exercise goals</h2>
-<p>WIP</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> Fix and Complete the domain storytelling diagram;</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> As a developer, explore the existing project and evaluate implementation choices;</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> Implement one missing need described in the diagram, in the application; </li>
+</ul>
 <h2 id="scenario"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.2</span> Scenario</h2>
 <p><strong>Business Goal:</strong> As a moviegoer, I want to go to the movie theater, buy a ticket, maybe get some snacks and drinks, and watch the chosen movie.</p>
 <hr/>
@@ -263,14 +363,16 @@
 <p>Use <a href="https://egon.io/">Egon</a> to map this story while you explore it using Domain Storytelling.</p>
 <p>The outcome of this practice should be a <strong>diagram</strong> representation of the <strong>Movie</strong> use case and its respective <strong>java service</strong>.</p>
 <h3 id="getting-started"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.3.1</span> Getting Started</h3>
-<div class="admonition tip">
-<p class="admonition-title">TIP: Shedding light on solutions</p>
-<p>... </p>
-</div>
 <ol>
 <li>Using your browser, access <a href="http://egon.io">Egon.io</a></li>
 <li>Import the diagram located under <code>ddd-workshop-labs/storytelling/03-movies.dst</code></li>
-<li>Complete the domain by exploring the use case, asking questions or discussing with other attendees;</li>
+<li>
+<p>It should look like this:</p>
+<p><img alt="03-movie-domain-diagram.png" src="../images/03-movie-domain-diagram.png"/></p>
+</li>
+<li>
+<p>Complete the domain by exploring the use case, asking questions or discussing with other attendees;</p>
+</li>
 </ol>
 <p>Make sure you complete the following tasks:</p>
 <ul class="task-list">
@@ -289,6 +391,9 @@ start designing you Java service.</p>
 <h2 id="from-story-to-code-the-movie-service"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.4</span> From Story to Code: the Movie service</h2>
 <ol>
 <li>In the <code>ddd-workshop-labs</code> folder, locate and open the project <code>03-movies</code> using your chosen Java IDE;</li>
+</ol>
+<h2 id="observe-and-learn"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.5</span> Observe and learn</h2>
+<ol>
 <li>Open the test class <code>expert.os.workshop.ddd.cinema.OrderTest</code>; </li>
 <li>Now evaluate the following items:</li>
 <li>Is this test is validating the user story previously described? If not, what are your ideas to adjust it?</li>
@@ -331,12 +436,14 @@ and snacks in order to watch the movie.</p>
 the usage of ubiquitous language across business conversations and the technology scope.</p>
 <p>Now, before finishing this project's implementation, navigate through the project and notice the following details:</p>
 <ol>
-<li>The products sold by this movie theater are defined by the <code>Interface</code> named <code>Product</code>. 
+<li>
+<p>Entities such as <code>Moviegoer</code> and <code>Movie</code> are mapped with <code>org.jmolecules.ddd.annotation.@Entity</code>. How can this class setting be helpful?</p>
+</li>
+<li>
+<p>The products sold by this movie theater are defined by the <code>Interface</code> named <code>Product</code>. 
 <div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">record</span> <span class="nc">Food</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">MonetaryAmount</span><span class="w"> </span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="p">{}</span>
 </span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">record</span> <span class="nc">Ticket</span><span class="w"> </span><span class="p">(</span><span class="n">Movie</span><span class="w"> </span><span class="n">movie</span><span class="p">,</span><span class="w"> </span><span class="n">MonetaryAmount</span><span class="w"> </span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-</span></code></pre></div></li>
-<li>
-<p>Entities such as <code>Moviegoer</code> and <code>Movie</code> are mapped with <code>org.jmolecules.ddd.annotation.@Entity</code>.   </p>
+</span></code></pre></div></p>
 </li>
 <li>
 <p>Because we're relying on OOP abstraction, in the <code>Order</code> class, adding a new product is really simple to write, understand and maintain:</p>
@@ -353,8 +460,124 @@ the usage of ubiquitous language across business conversations and the technolog
 <ol>
 <li>If new products are made available, the impacts on the <code>Order</code> class should be minimal to none;</li>
 </ol>
+<h2 id="testing-the-movie-service"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.6</span> Testing the Movie Service</h2>
+<p>Now, make sure your project is working just fine.</p>
+<ol>
+<li>
+<p>Using your IDE or your terminal, run the following command:</p>
+<div class="language-java highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">mvn</span><span class="w"> </span><span class="n">clean</span><span class="w"> </span><span class="kn">package</span>
+</span></code></pre></div>
+</li>
+</ol>
+<p>You should see one test executed successfully, as well as the project build.<br/>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>-------------------------------------------------------
+</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Running<span class="w"> </span>expert.os.workshop.ddd.cinema.OrderTest
+</span><span id="__span-4-3"><a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>Mar<span class="w"> </span><span class="m">21</span>,<span class="w"> </span><span class="m">2023</span><span class="w"> </span><span class="m">7</span>:39:08<span class="w"> </span>PM<span class="w"> </span>org.javamoney.moneta.DefaultMonetaryContextFactory<span class="w"> </span>createMonetaryContextNonNullConfig
+</span><span id="__span-4-4"><a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>INFO:<span class="w"> </span>Using<span class="w"> </span>custom<span class="w"> </span>MathContext:<span class="w"> </span><span class="nv">precision</span><span class="o">=</span><span class="m">256</span>,<span class="w"> </span><span class="nv">roundingMode</span><span class="o">=</span>HALF_EVEN
+</span><span id="__span-4-5"><a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Tests<span class="w"> </span>run:<span class="w"> </span><span class="m">1</span>,<span class="w"> </span>Failures:<span class="w"> </span><span class="m">0</span>,<span class="w"> </span>Errors:<span class="w"> </span><span class="m">0</span>,<span class="w"> </span>Skipped:<span class="w"> </span><span class="m">0</span>,<span class="w"> </span>Time<span class="w"> </span>elapsed:<span class="w"> </span><span class="m">0</span>.067<span class="w"> </span>s<span class="w"> </span>-<span class="w"> </span><span class="k">in</span><span class="w"> </span>expert.os.workshop.ddd.cinema.OrderTest
+</span><span id="__span-4-6"><a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>
+</span><span id="__span-4-7"><a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Results:
+</span><span id="__span-4-8"><a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>
+</span><span id="__span-4-9"><a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Tests<span class="w"> </span>run:<span class="w"> </span><span class="m">1</span>,<span class="w"> </span>Failures:<span class="w"> </span><span class="m">0</span>,<span class="w"> </span>Errors:<span class="w"> </span><span class="m">0</span>,<span class="w"> </span>Skipped:<span class="w"> </span><span class="m">0</span>
+</span><span id="__span-4-10"><a href="#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>
+</span><span id="__span-4-11"><a href="#__codelineno-4-11" id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>------------------------------------------------------------------------
+</span><span id="__span-4-12"><a href="#__codelineno-4-12" id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>BUILD<span class="w"> </span>SUCCESS
+</span><span id="__span-4-13"><a href="#__codelineno-4-13" id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>------------------------------------------------------------------------
+</span><span id="__span-4-14"><a href="#__codelineno-4-14" id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Total<span class="w"> </span>time:<span class="w">  </span><span class="m">1</span>.407<span class="w"> </span>s
+</span><span id="__span-4-15"><a href="#__codelineno-4-15" id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Finished<span class="w"> </span>at:<span class="w"> </span><span class="m">2023</span>-03-21T19:39:09-03:00
+</span><span id="__span-4-16"><a href="#__codelineno-4-16" id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>------------------------------------------------------------------------
+</span></code></pre></div></p>
+<p>Now, let's expand our implementation and certify the benefits of the Domain Storytelling practice and an application designed
+and developed through DDD principles. </p>
 <hr/>
-<p>Your task is to wrap up the implementation of this project. #wip</p>
+<h3 id="expanding-the-implementation"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.6.1</span> Expanding the implementation</h3>
+<p>Now, as a developer who recently joined the team, you've learned about the use case through the <strong>Domain Storytelling</strong> 
+practice.</p>
+<h4 id="next-step-choosing-the-next-implementation"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.6.1.1</span> Next step: choosing the next implementation</h4>
+<p>At this stage, having looked at the domain diagram and existing code, do you feel comfortable when asked to 
+identify which features are still missing and choosing one to implement?</p>
+<p>For example. As of now, the Movie Service provides the following capability:</p>
+<blockquote>
+<p>A <code>Moviegoer</code> registers an <code>Order</code> containing a <code>Ticket</code> and <code>Food</code>, and is informed the total cost;</p>
+</blockquote>
+<div class="admonition question">
+<p class="admonition-title">Can you identify more scenarios to be implemented, based on the diagram <code>03-movies</code>?</p>
+</div>
+<p>Now, let's go back to coding. </p>
+<h4 id="next-step-choosing-the-next-implementation_1"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.6.1.2</span> Next step: choosing the next implementation</h4>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Choose one of the discussed scenarios to implement in the <code>03-movie</code> application; </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Use as much as you can, the terminology described in the domain diagram;</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Implement a unit test to confirm your solution is working. </li>
+</ul>
+<p>If you need some help, next is some guidance to support you on this task. If you feel comfortable, we recommend you to try to identify and add the
+next enhancement based on your interpretation and coding only. </p>
+<h4 id="enhancement-allow-customers-to-buy-beverages"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.6.1.3</span> Enhancement: Allow customers to buy beverages</h4>
+<p>As of now, we only support orders with <code>Food</code>. Let's add the <code>Beverage</code> to our solution.</p>
+<ol>
+<li>Let's start with the unit test, as stated by TDD (Test Driven Development) practices. 
+Open the <code>test.java.expert.os.workshop.ddd.cinema.OrderTest</code> class;</li>
+<li>Add a new unit test called <code>shouldSumTotalWithBeverage</code>; Don't forget the "<code>@Test</code>" annotation.</li>
+<li>
+<p>The test can look like this:</p>
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-40">40</a></span>
+<span class="normal"><a href="#__codelineno-5-41">41</a></span>
+<span class="normal"><a href="#__codelineno-5-42">42</a></span>
+<span class="normal"><a href="#__codelineno-5-43">43</a></span>
+<span class="normal"><a href="#__codelineno-5-44">44</a></span>
+<span class="normal"><a href="#__codelineno-5-45">45</a></span>
+<span class="normal"><a href="#__codelineno-5-46">46</a></span>
+<span class="normal"><a href="#__codelineno-5-47">47</a></span>
+<span class="normal"><a href="#__codelineno-5-48">48</a></span>
+<span class="normal"><a href="#__codelineno-5-49">49</a></span>
+<span class="normal"><a href="#__codelineno-5-50">50</a></span>
+<span class="normal"><a href="#__codelineno-5-51">51</a></span>
+<span class="normal"><a href="#__codelineno-5-52">52</a></span>
+<span class="normal"><a href="#__codelineno-5-53">53</a></span>
+<span class="normal"><a href="#__codelineno-5-54">54</a></span>
+<span class="normal"><a href="#__codelineno-5-55">55</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-40"><a id="__codelineno-5-40" name="__codelineno-5-40"></a><span class="w">    </span><span class="nd">@Test</span>
+</span><span id="__span-5-41"><a id="__codelineno-5-41" name="__codelineno-5-41"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">shouldTotalWithBeverage</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-42"><a id="__codelineno-5-42" name="__codelineno-5-42"></a><span class="w">        </span><span class="n">Movie</span><span class="w"> </span><span class="n">movie</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Movie</span><span class="p">(</span><span class="s">"Avatar"</span><span class="p">,</span><span class="w"> </span><span class="n">Year</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">2022</span><span class="p">));</span>
+</span><span id="__span-5-43"><a id="__codelineno-5-43" name="__codelineno-5-43"></a><span class="w">        </span><span class="n">Product</span><span class="w"> </span><span class="n">ticket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Ticket</span><span class="p">(</span><span class="n">movie</span><span class="p">,</span><span class="w"> </span><span class="n">Money</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">currency</span><span class="p">));</span>
+</span><span id="__span-5-44"><a id="__codelineno-5-44" name="__codelineno-5-44"></a><span class="w">        </span><span class="n">Product</span><span class="w"> </span><span class="n">popcorn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Food</span><span class="p">(</span><span class="s">"popcorn"</span><span class="p">,</span><span class="w"> </span><span class="n">Money</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="n">currency</span><span class="p">));</span>
+</span><span id="__span-5-45"><a id="__codelineno-5-45" name="__codelineno-5-45"></a><span class="w">        </span><span class="n">Product</span><span class="w"> </span><span class="n">soda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Beverage</span><span class="p">(</span><span class="s">"soda"</span><span class="p">,</span><span class="w"> </span><span class="n">Money</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">currency</span><span class="p">));</span><span class="w">  </span><span class="c1">//(1)</span>
+</span><span id="__span-5-46"><a id="__codelineno-5-46" name="__codelineno-5-46"></a><span class="w">        </span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Order</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="n">moviegoer</span><span class="p">);</span>
+</span><span id="__span-5-47"><a id="__codelineno-5-47" name="__codelineno-5-47"></a>
+</span><span id="__span-5-48"><a id="__codelineno-5-48" name="__codelineno-5-48"></a><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">ticket</span><span class="p">);</span>
+</span><span id="__span-5-49"><a id="__codelineno-5-49" name="__codelineno-5-49"></a><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">popcorn</span><span class="p">);</span>
+</span><span id="__span-5-50"><a id="__codelineno-5-50" name="__codelineno-5-50"></a><span class="w">        </span><span class="n">order</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">soda</span><span class="p">);</span><span class="w"> </span><span class="c1">//(2)</span>
+</span><span id="__span-5-51"><a id="__codelineno-5-51" name="__codelineno-5-51"></a>
+</span><span id="__span-5-52"><a id="__codelineno-5-52" name="__codelineno-5-52"></a><span class="w">        </span><span class="n">MonetaryAmount</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">order</span><span class="p">.</span><span class="na">total</span><span class="p">();</span>
+</span><span id="__span-5-53"><a id="__codelineno-5-53" name="__codelineno-5-53"></a><span class="w">        </span><span class="n">Assertions</span><span class="p">.</span><span class="na">assertThat</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</span><span id="__span-5-54"><a id="__codelineno-5-54" name="__codelineno-5-54"></a><span class="w">                </span><span class="p">.</span><span class="na">isEqualTo</span><span class="p">(</span><span class="n">Money</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="n">currency</span><span class="p">));</span><span class="w"> </span><span class="c1">//(3)</span>
+</span><span id="__span-5-55"><a id="__codelineno-5-55" name="__codelineno-5-55"></a><span class="w">    </span><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<ol>
+<li>Creates a new beverage abstrated as a product</li>
+<li>Adds the beverage "soda" to the order;</li>
+<li>Asserts that the total now includes the beverage cost;</li>
+</ol>
+</li>
+</ol>
+<h4 id="adding-the-beverage-model"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.6.1.4</span> Adding the beverage model</h4>
+<p>Now, your application is breaking, as expected. It's time to create the entity <code>Beverage</code>.</p>
+<ol>
+<li>In the package <code>expert.os.workshop.ddd.cinema</code>, create a new class called <code>Beverage.java</code>. It can look as the sample below. 
+Notice we can rely on the <code>Product</code> interface to garantee it will behave as expecteed for a <code>Product</code> in this domain.
+<div class="language-java highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">expert.os.workshop.ddd.cinema</span><span class="p">;</span>
+</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">javax.money.MonetaryAmount</span><span class="p">;</span>
+</span><span id="__span-6-4"><a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a href="#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">record</span> <span class="nc">Beverage</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">MonetaryAmount</span><span class="w"> </span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div></li>
+<li>Using your IDE or a command line, run the maven test and check the resulting output.
+    <div class="language-shell highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>mvn<span class="w"> </span>clean<span class="w"> </span><span class="nb">test</span>
+</span></code></pre></div></li>
+</ol>
+<p>Did it work? Why did the price was correctly calculated even though we didn't add new business logic to the order?</p>
+<hr/>
+<h2 id="congratulations"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.7</span> Congratulations!</h2>
+<p>You've done a great job so far. Let's keep on adding new concepts and technologies to our exercises.</p>
 <hr/>
 <div class="md-source-file">
 <small>
