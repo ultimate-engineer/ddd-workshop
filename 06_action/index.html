@@ -1,0 +1,605 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="DDD in action Workshop: Strategies and tactics for Java solutions" name="description"/>
+<meta content="Karina Varela and Otávio Santana" name="author"/>
+<link href="../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-8.3.8" name="generator"/>
+<title>6th Action Java, NoSQL and DDD: Abstracting business away from your db solution - DDD in Action: Strategies and tactics for Java solutions</title>
+<link href="../assets/stylesheets/main.1d29e8d0.min.css" rel="stylesheet"/>
+<link href="../assets/stylesheets/palette.cbb835fc.min.css" rel="stylesheet"/>
+<style>:root{--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 17a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H9.46c.35.61.54 1.3.54 2h10v11h-9v2m4-10v2H9v13H7v-6H5v6H3v-8H1.5V9a2 2 0 0 1 2-2H15M8 4a2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2Z"/></svg>');--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m13.13 22.19-1.63-3.83c1.57-.58 3.04-1.36 4.4-2.27l-2.77 6.1M5.64 12.5l-3.83-1.63 6.1-2.77C7 9.46 6.22 10.93 5.64 12.5M21.61 2.39S16.66.269 11 5.93c-2.19 2.19-3.5 4.6-4.35 6.71-.28.75-.09 1.57.46 2.13l2.13 2.12c.55.56 1.37.74 2.12.46A19.1 19.1 0 0 0 18.07 13c5.66-5.66 3.54-10.61 3.54-10.61m-7.07 7.07c-.78-.78-.78-2.05 0-2.83s2.05-.78 2.83 0c.77.78.78 2.05 0 2.83-.78.78-2.05.78-2.83 0m-5.66 7.07-1.41-1.41 1.41 1.41M6.24 22l3.64-3.64c-.34-.09-.67-.24-.97-.45L4.83 22h1.41M2 22h1.41l4.77-4.76-1.42-1.41L2 20.59V22m0-2.83 4.09-4.08c-.21-.3-.36-.62-.45-.97L2 17.76v1.41Z"/></svg>');}</style>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<link href="../stylesheets/extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="light-blue" data-md-color-primary="blue" data-md-color-scheme="slate" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#6th-action-java-nosql-and-ddd-abstracting-business-away-from-your-db-solution">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="DDD in Action: Strategies and tactics for Java solutions" class="md-header__button md-logo" data-md-component="logo" href=".." title="DDD in Action: Strategies and tactics for Java solutions">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            DDD in Action: Strategies and tactics for Java solutions
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              6th Action Java, NoSQL and DDD: Abstracting business away from your db solution
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="light-blue" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="light-blue" data-md-color-media="" data-md-color-primary="blue" data-md-color-scheme="default" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ultimate-engineer/ddd-workshop" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="DDD in Action: Strategies and tactics for Java solutions" class="md-nav__button md-logo" data-md-component="logo" href=".." title="DDD in Action: Strategies and tactics for Java solutions">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    DDD in Action: Strategies and tactics for Java solutions
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/ultimate-engineer/ddd-workshop" title="Go to repository">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 480 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"></path></svg>
+</div>
+<div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="..">
+        About this workshop
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../00_environment/">
+        Preparing your environment
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../01_action/">
+        1st Action, the Bookstore: Getting Started with Domain Storytelling
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../02_action/">
+        2nd Action, the Taxi: a Domain Storytelling exercise
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../03_action/">
+        3rd Action, the Movie: Establishing Boundaries and Context Mapping
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          6th Action Java, NoSQL and DDD: Abstracting business away from your db solution
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        6th Action Java, NoSQL and DDD: Abstracting business away from your db solution
+      </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exercise-goals">
+    Exercise goals
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#scenario">
+    Scenario
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#get-ready">
+    Get ready
+  </a>
+<nav aria-label="Get ready" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#jakarta-nosql-getting-started-with-java-and-nosql">
+    Jakarta NoSQL: Getting Started with Java and NoSQL
+  </a>
+<nav aria-label="Jakarta NoSQL: Getting Started with Java and NoSQL" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#add-jakarta-nosql-to-your-project">
+    Add Jakarta NoSQL to your project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuring-the-database-connection">
+    Configuring the database connection
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mapping-entities">
+    Mapping Entities
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#managing-data-with-jakarta-nosql">
+    Managing Data with Jakarta NoSQL
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing-the-integration">
+    Testing the integration
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#congratulations">
+    Congratulations!
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exercise-goals">
+    Exercise goals
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#scenario">
+    Scenario
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#get-ready">
+    Get ready
+  </a>
+<nav aria-label="Get ready" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#jakarta-nosql-getting-started-with-java-and-nosql">
+    Jakarta NoSQL: Getting Started with Java and NoSQL
+  </a>
+<nav aria-label="Jakarta NoSQL: Getting Started with Java and NoSQL" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#add-jakarta-nosql-to-your-project">
+    Add Jakarta NoSQL to your project
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#configuring-the-database-connection">
+    Configuring the database connection
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mapping-entities">
+    Mapping Entities
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#managing-data-with-jakarta-nosql">
+    Managing Data with Jakarta NoSQL
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing-the-integration">
+    Testing the integration
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#congratulations">
+    Congratulations!
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="6th-action-java-nosql-and-ddd-abstracting-business-away-from-your-db-solution"><span class="enumerate-headings-plugin enumerate-heading-plugin">5.</span> 6th Action Java, NoSQL and DDD: Abstracting business away from your db solution</h1>
+<p>In this exercise you will learn how to abstract your domain data from the technical implementation details related to 
+database persistence, most specifically, non-relational persistence storage with NoSQL
+.
+In this exercise you can validate and practice your knowledge of the following concepts:</p>
+<ul>
+<li>A pure Java implementation of non-relational database persistence </li>
+<li>Dev experience when using NoSQL databases with Java; </li>
+<li>Jakarta NoSQL; </li>
+<li>Implicit and constant usage of CDI;</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Roll up your sleeves, and get to action!</p>
+<p>It's time to practice what you have learned and get your hands. Roll up your sleeves and let's get to action!</p>
+</div>
+<h2 id="exercise-goals"><span class="enumerate-headings-plugin enumerate-heading-plugin">5.1</span> Exercise goals</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> Connect a Java application to a MongoDB database</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> Map a persistable Java <code>Entity</code>;</li>
+<li>Manage data:<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> Insert </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> Search</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> Delete</li>
+</ul>
+</li>
+</ul>
+<h2 id="scenario"><span class="enumerate-headings-plugin enumerate-heading-plugin">5.2</span> Scenario</h2>
+<p><strong>Business Goal:</strong> Manage book's data (Insert/Search/Delete) using a document type NoSQL database solution and Java.  </p>
+<h2 id="get-ready"><span class="enumerate-headings-plugin enumerate-heading-plugin">5.3</span> Get ready</h2>
+<ol>
+<li>
+<p><strong>Code:</strong> </p>
+<p>Make sure you have the latest version of the <code>ddd-workshop-labs</code> project. Using a terminal, open the <code>ddd-workshop-labs</code> folder and run the command below:<br/>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>main
+</span></code></pre></div></p>
+</li>
+<li>
+<p><strong>Docker:</strong></p>
+<p>we'll need a MongoDB instance. Docker simplifies the DB setup. Make sure docker is running;</p>
+<div class="admonition info">
+<p class="admonition-title">If you don't have Docker installer yet, you can get it at: https://www.docker.com/</p>
+</div>
+</li>
+<li>
+<p><em>Database:</em></p>
+<p>Start a MongoDB container with the following command:<br/>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>mongodb-instance<span class="w"> </span>-p<span class="w"> </span><span class="m">27017</span>:27017<span class="w"> </span>mongo
+</span></code></pre></div></p>
+</li>
+</ol>
+<h3 id="jakarta-nosql-getting-started-with-java-and-nosql"><span class="enumerate-headings-plugin enumerate-heading-plugin">5.3.1</span> Jakarta NoSQL: Getting Started with Java and NoSQL</h3>
+<p>You will now be working with the project <code>06-jnosql</code>. It brings a basic Java project structure with previously configured
+CDI dependencies (weld).  </p>
+<h4 id="add-jakarta-nosql-to-your-project"><span class="enumerate-headings-plugin enumerate-heading-plugin">5.3.1.1</span> Add Jakarta NoSQL to your project</h4>
+<ol>
+<li>The first step is to open your <code>pom.xml</code> file and, within the <code>&lt;dependencies&gt;</code> section, add the JNoSQL dependency:  </li>
+</ol>
+<div class="language-xml highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-44">44</a></span>
+<span class="normal"><a href="#__codelineno-2-45">45</a></span>
+<span class="normal"><a href="#__codelineno-2-46">46</a></span>
+<span class="normal"><a href="#__codelineno-2-47">47</a></span>
+<span class="normal"><a href="#__codelineno-2-48">48</a></span>
+<span class="normal"><a href="#__codelineno-2-49">49</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-44"><a id="__codelineno-2-44" name="__codelineno-2-44"></a><span class="cm">&lt;!--        Add JNoSQL dependency--&gt;</span>
+</span><span id="__span-2-45"><a id="__codelineno-2-45" name="__codelineno-2-45"></a><span class="nt">&lt;dependency&gt;</span>
+</span><span id="__span-2-46"><a id="__codelineno-2-46" name="__codelineno-2-46"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>org.eclipse.jnosql.mapping<span class="nt">&lt;/groupId&gt;</span>
+</span><span id="__span-2-47"><a id="__codelineno-2-47" name="__codelineno-2-47"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>jnosql-mongodb-extension<span class="nt">&lt;/artifactId&gt;</span>
+</span><span id="__span-2-48"><a id="__codelineno-2-48" name="__codelineno-2-48"></a><span class="w">    </span><span class="nt">&lt;version&gt;</span>${jnosql.version}<span class="nt">&lt;/version&gt;</span>
+</span><span id="__span-2-49"><a id="__codelineno-2-49" name="__codelineno-2-49"></a><span class="nt">&lt;/dependency&gt;</span>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="configuring-the-database-connection"><span class="enumerate-headings-plugin enumerate-heading-plugin">5.3.1.2</span> Configuring the database connection</h4>
+<p>When using MicroProfile Config, the properties are mainly placed in the <code>src/main/resources/microprofile-config.properties</code> file. 
+This is also where we'll add our database configurations.</p>
+<ol>
+<li>Open the file <code>src/main/resources/microprofile-config.properties</code></li>
+<li>Uncomment and fill in our MongoDB database name and host:<br/>
+<div class="language-properties highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="na">jnosql.document.database</span><span class="o">=</span><span class="s">library</span>
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="na">jnosql.mongodb.host</span><span class="o">=</span><span class="s">localhost:27017</span>
+</span></code></pre></div></li>
+</ol>
+<h4 id="mapping-entities"><span class="enumerate-headings-plugin enumerate-heading-plugin">5.3.1.3</span> Mapping Entities</h4>
+<p>Mapping our persistable object is very straightforward, especially when bringing <strong>Java Records</strong> to the scene:</p>
+<ol>
+<li>Create a new class file: <code>expert.os.workshop.ddd.jnosql.Book</code>;
+<div class="language-java highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">record</span> <span class="nc">Book</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div></li>
+<li>
+<p>Set the attributes of the class, String <code>isbn</code>, String <code>title</code>, and <code>Year</code> year; Configure these attributes as column with the <code>jakarta.nosql.@Column</code> annotation; 
+<div class="language-java highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">record</span> <span class="nc">Book</span><span class="p">(</span><span class="nd">@Id</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">isbn</span><span class="p">,</span><span class="w"> </span><span class="nd">@Column</span><span class="p">(</span><span class="s">"title"</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="nd">@Column</span><span class="p">(</span><span class="s">"year"</span><span class="p">)</span><span class="w"> </span><span class="n">Year</span><span class="w"> </span><span class="n">year</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span></code></pre></div></p>
+</li>
+<li>
+<p>Configure this as a <code>jakarta.nosql.@Entity</code>. Here's an example of how it should look like at the end:
+<div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="kn">package</span><span class="w"> </span><span class="nn">expert.os.workshop.ddd.jnosql</span><span class="p">;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.nosql.Column</span><span class="p">;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.nosql.Entity</span><span class="p">;</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">jakarta.nosql.Id</span><span class="p">;</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.time.Year</span><span class="p">;</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="nd">@Entity</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="kd">public</span><span class="w"> </span><span class="kd">record</span> <span class="nc">Book</span><span class="p">(</span><span class="nd">@Id</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">isbn</span><span class="p">,</span><span class="w"> </span><span class="nd">@Column</span><span class="p">(</span><span class="s">"title"</span><span class="p">)</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="nd">@Column</span><span class="p">(</span><span class="s">"year"</span><span class="p">)</span><span class="w"> </span><span class="n">Year</span><span class="w"> </span><span class="n">year</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div></p>
+</li>
+</ol>
+<div class="admonition success">
+<p class="admonition-title">Congratulations! At this point you have configured the database and finished creating the entity we will store in MongoDB!</p>
+</div>
+<h4 id="managing-data-with-jakarta-nosql"><span class="enumerate-headings-plugin enumerate-heading-plugin">5.3.1.4</span> Managing Data with Jakarta NoSQL</h4>
+<p>Now, let's get some data in our MongoDB instance!  </p>
+<div class="admonition note">
+<p class="admonition-title">We will rely on the power of CDI to instantiate a <code>DocumentTemplate</code> for us. We can do that by using the <code>SeContainer</code> directly or <code>@Inject</code> depending on your application definitions.</p>
+</div>
+<p>Let's ask CDI to create an instance, or return an existing instance, of <code>DocumentTemplate</code>.</p>
+<p>This is the object we will use to manage our data in MongoDB.</p>
+<ol>
+<li>Using your IDE, open your class <code>expert.os.workshop.ddd.jnosql.App</code></li>
+<li><strong>Create a new Book</strong>, that we'll use to explore some data management APIs;
+    <div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-30">30</a></span>
+<span class="normal"><a href="#__codelineno-7-31">31</a></span>
+<span class="normal"><a href="#__codelineno-7-32">32</a></span>
+<span class="normal"><a href="#__codelineno-7-33">33</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30"></a><span class="cm">/**</span>
+</span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31"></a><span class="cm"> * TODO: Create a book instance: `effective`</span>
+</span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32"></a><span class="cm"> * */</span>
+</span><span id="__span-7-33"><a id="__codelineno-7-33" name="__codelineno-7-33"></a><span class="n">Book</span><span class="p">(</span><span class="n">UUID</span><span class="p">.</span><span class="na">randomUUID</span><span class="p">().</span><span class="na">toString</span><span class="p">(),</span><span class="w"> </span><span class="s">"Effective Java"</span><span class="p">,</span><span class="w"> </span><span class="n">Year</span><span class="p">.</span><span class="na">of</span><span class="p">(</span><span class="mi">2012</span><span class="p">));</span>
+</span></code></pre></div></td></tr></table></div></li>
+<li>Inside the <code>try...catch</code> block, ask CDI for an <strong>instance</strong> of <code>DocumentTemplate</code>; 
+     <div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-35">35</a></span>
+<span class="normal"><a href="#__codelineno-8-36">36</a></span>
+<span class="normal"><a href="#__codelineno-8-37">37</a></span>
+<span class="normal"><a href="#__codelineno-8-38">38</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-35"><a id="__codelineno-8-35" name="__codelineno-8-35"></a><span class="w">   </span><span class="cm">/**</span>
+</span><span id="__span-8-36"><a id="__codelineno-8-36" name="__codelineno-8-36"></a><span class="cm">    * TODO: Use CDI container to create `template`, an instance of `jakarta.nosql.document.DocumentTemplate`</span>
+</span><span id="__span-8-37"><a id="__codelineno-8-37" name="__codelineno-8-37"></a><span class="cm">    * */</span>
+</span><span id="__span-8-38"><a id="__codelineno-8-38" name="__codelineno-8-38"></a><span class="w">   </span><span class="n">DocumentTemplate</span><span class="w"> </span><span class="n">template</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">container</span><span class="p">.</span><span class="na">select</span><span class="p">(</span><span class="n">DocumentTemplate</span><span class="p">.</span><span class="na">class</span><span class="p">).</span><span class="na">get</span><span class="p">();</span>
+</span></code></pre></div></td></tr></table></div></li>
+<li><strong>Insert the <code>book</code></strong> in our database using the <code>template</code>: 
+     <div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-38">38</a></span>
+<span class="normal"><a href="#__codelineno-9-39">39</a></span>
+<span class="normal"><a href="#__codelineno-9-40">40</a></span>
+<span class="normal"><a href="#__codelineno-9-41">41</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-38"><a id="__codelineno-9-38" name="__codelineno-9-38"></a><span class="w">       </span><span class="cm">/**</span>
+</span><span id="__span-9-39"><a id="__codelineno-9-39" name="__codelineno-9-39"></a><span class="cm">        * TODO: Using the `template` instance, use the method `insert` to save the `effective` book</span>
+</span><span id="__span-9-40"><a id="__codelineno-9-40" name="__codelineno-9-40"></a><span class="cm">        * */</span>
+</span><span id="__span-9-41"><a id="__codelineno-9-41" name="__codelineno-9-41"></a><span class="w">       </span><span class="n">template</span><span class="p">.</span><span class="na">insert</span><span class="p">(</span><span class="n">effective</span><span class="p">);</span><span class="w">   </span>
+</span></code></pre></div></td></tr></table></div></li>
+<li>
+<p><strong>Search</strong> for books with name "effective" using the template <code>select</code> Fluent API, and print it on the command line:
+     <div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-43">43</a></span>
+<span class="normal"><a href="#__codelineno-10-44">44</a></span>
+<span class="normal"><a href="#__codelineno-10-45">45</a></span>
+<span class="normal"><a href="#__codelineno-10-46">46</a></span>
+<span class="normal"><a href="#__codelineno-10-47">47</a></span>
+<span class="normal"><a href="#__codelineno-10-48">48</a></span>
+<span class="normal"><a href="#__codelineno-10-49">49</a></span>
+<span class="normal"><a href="#__codelineno-10-50">50</a></span>
+<span class="normal"><a href="#__codelineno-10-51">51</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-43"><a id="__codelineno-10-43" name="__codelineno-10-43"></a><span class="w">       </span><span class="cm">/**</span>
+</span><span id="__span-10-44"><a id="__codelineno-10-44" name="__codelineno-10-44"></a><span class="cm">        * TODO: Try out the fluent API for searching data.</span>
+</span><span id="__span-10-45"><a id="__codelineno-10-45" name="__codelineno-10-45"></a><span class="cm">        * Use the `template.select` method to search for books where title equals to "Effective Java");</span>
+</span><span id="__span-10-46"><a id="__codelineno-10-46" name="__codelineno-10-46"></a><span class="cm">        * Store the results in a `List&lt;Book&gt; books;</span>
+</span><span id="__span-10-47"><a id="__codelineno-10-47" name="__codelineno-10-47"></a><span class="cm">        * Print out the result of the search:  System.out.println("These are the books founds: " + books);</span>
+</span><span id="__span-10-48"><a id="__codelineno-10-48" name="__codelineno-10-48"></a><span class="cm">        * */</span>
+</span><span id="__span-10-49"><a id="__codelineno-10-49" name="__codelineno-10-49"></a><span class="w">       </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Book</span><span class="o">&gt;</span><span class="w"> </span><span class="n">books</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">template</span><span class="p">.</span><span class="na">select</span><span class="p">(</span><span class="n">Book</span><span class="p">.</span><span class="na">class</span><span class="p">).</span><span class="na">where</span><span class="p">(</span><span class="s">"title"</span><span class="p">).</span><span class="na">eq</span><span class="p">(</span><span class="s">"Effective Java"</span><span class="p">)</span>
+</span><span id="__span-10-50"><a id="__codelineno-10-50" name="__codelineno-10-50"></a><span class="w">               </span><span class="p">.</span><span class="na">result</span><span class="p">();</span>
+</span><span id="__span-10-51"><a id="__codelineno-10-51" name="__codelineno-10-51"></a><span class="w">       </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"[DDD_IN_ACTION] Searching all books with title Effective Java: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">books</span><span class="p">);</span><span class="w">   </span>
+</span></code></pre></div></td></tr></table></div></p>
+</li>
+<li>
+<p>Using your IDE, execute the <code>App</code> class' <code>main</code> method and observe the outputs. At this point if all is right, you should be able to find the following logs in your console: 
+    <div class="language-shell highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>Mar<span class="w"> </span><span class="m">22</span>,<span class="w"> </span><span class="m">2023</span><span class="w"> </span><span class="m">11</span>:51:06<span class="w"> </span>AM<span class="w"> </span>org.eclipse.jnosql.mapping.document.spi.DocumentExtension<span class="w"> </span>onAfterBeanDiscovery
+</span><span id="__span-11-2"><a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a>INFO:<span class="w"> </span>Processing<span class="w"> </span>repositories<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>Document<span class="w"> </span>implementation:<span class="w"> </span><span class="o">[]</span>
+</span><span id="__span-11-3"><a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a>Mar<span class="w"> </span><span class="m">22</span>,<span class="w"> </span><span class="m">2023</span><span class="w"> </span><span class="m">11</span>:51:06<span class="w"> </span>AM<span class="w"> </span>org.jboss.weld.environment.se.WeldContainer<span class="w"> </span>fireContainerInitializedEvent
+</span><span id="__span-11-4"><a href="#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a>INFO:<span class="w"> </span>WELD-ENV-002003:<span class="w"> </span>Weld<span class="w"> </span>SE<span class="w"> </span>container<span class="w"> </span>dc1de60f-2680-41ba-b928-ea7847aab678<span class="w"> </span>initialized
+</span><span id="__span-11-5"><a href="#__codelineno-11-5" id="__codelineno-11-5" name="__codelineno-11-5"></a>Mar<span class="w"> </span><span class="m">22</span>,<span class="w"> </span><span class="m">2023</span><span class="w"> </span><span class="m">11</span>:51:06<span class="w"> </span>AM<span class="w"> </span>com.mongodb.internal.diagnostics.logging.Loggers<span class="w"> </span>shouldUseSLF4J
+</span><span id="__span-11-6"><a href="#__codelineno-11-6" id="__codelineno-11-6" name="__codelineno-11-6"></a>WARNING:<span class="w"> </span>SLF4J<span class="w"> </span>not<span class="w"> </span>found<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>classpath.<span class="w">  </span>Logging<span class="w"> </span>is<span class="w"> </span>disabled<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span><span class="s1">'org.mongodb.driver'</span><span class="w"> </span>component
+</span><span id="__span-11-7"><a href="#__codelineno-11-7" id="__codelineno-11-7" name="__codelineno-11-7"></a>
+</span><span id="__span-11-8"><a href="#__codelineno-11-8" id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="o">[</span>DDD_IN_ACTION<span class="o">]</span><span class="w"> </span>Searching<span class="w"> </span>all<span class="w"> </span>books<span class="w"> </span>with<span class="w"> </span>title<span class="w"> </span>Effective<span class="w"> </span>Java:<span class="w"> </span><span class="o">[</span>Book<span class="o">[</span><span class="nv">isbn</span><span class="o">=</span>735b545a-e004-4716-a80c-81e7efc7a722,<span class="w"> </span><span class="nv">title</span><span class="o">=</span>Effective<span class="w"> </span>Java,<span class="w"> </span><span class="nv">year</span><span class="o">=</span><span class="m">2012</span><span class="o">]</span>,<span class="w"> </span>Book<span class="o">[</span><span class="nv">isbn</span><span class="o">=</span>6c134ecf-e3c7-4de4-a0ef-e3bfd8d0a856,<span class="w"> </span><span class="nv">title</span><span class="o">=</span>Effective<span class="w"> </span>Java,<span class="w"> </span><span class="nv">year</span><span class="o">=</span><span class="m">2012</span><span class="o">]]</span>
+</span><span id="__span-11-9"><a href="#__codelineno-11-9" id="__codelineno-11-9" name="__codelineno-11-9"></a>
+</span><span id="__span-11-10"><a href="#__codelineno-11-10" id="__codelineno-11-10" name="__codelineno-11-10"></a>Mar<span class="w"> </span><span class="m">22</span>,<span class="w"> </span><span class="m">2023</span><span class="w"> </span><span class="m">11</span>:51:06<span class="w"> </span>AM<span class="w"> </span>org.jboss.weld.environment.se.WeldContainer<span class="w"> </span>shutdown
+</span><span id="__span-11-11"><a href="#__codelineno-11-11" id="__codelineno-11-11" name="__codelineno-11-11"></a>INFO:<span class="w"> </span>WELD-ENV-002001:<span class="w"> </span>Weld<span class="w"> </span>SE<span class="w"> </span>container<span class="w"> </span>dc1de60f-2680-41ba-b928-ea7847aab678<span class="w"> </span>shut<span class="w"> </span>down
+</span></code></pre></div></p>
+</li>
+<li><strong>Delete</strong> every instance of <code>Book.class</code> with name <code>Effective Java</code>:
+     <div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-53">53</a></span>
+<span class="normal"><a href="#__codelineno-12-54">54</a></span>
+<span class="normal"><a href="#__codelineno-12-55">55</a></span>
+<span class="normal"><a href="#__codelineno-12-56">56</a></span>
+<span class="normal"><a href="#__codelineno-12-57">57</a></span>
+<span class="normal"><a href="#__codelineno-12-58">58</a></span>
+<span class="normal"><a href="#__codelineno-12-59">59</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-53"><a id="__codelineno-12-53" name="__codelineno-12-53"></a><span class="w">       </span><span class="cm">/**</span>
+</span><span id="__span-12-54"><a id="__codelineno-12-54" name="__codelineno-12-54"></a><span class="cm">        * TODO: Delete</span>
+</span><span id="__span-12-55"><a id="__codelineno-12-55" name="__codelineno-12-55"></a><span class="cm">        * Using the `template`, use the method `delete` to delete instances of `Book.class` where the `title`</span>
+</span><span id="__span-12-56"><a id="__codelineno-12-56" name="__codelineno-12-56"></a><span class="cm">        * is equals to `Effective Java`.</span>
+</span><span id="__span-12-57"><a id="__codelineno-12-57" name="__codelineno-12-57"></a><span class="cm">        * Remind to invoke ".execute();" method to finalize the command;</span>
+</span><span id="__span-12-58"><a id="__codelineno-12-58" name="__codelineno-12-58"></a><span class="cm">        * */</span>
+</span><span id="__span-12-59"><a id="__codelineno-12-59" name="__codelineno-12-59"></a><span class="w">       </span><span class="n">template</span><span class="p">.</span><span class="na">delete</span><span class="p">(</span><span class="n">Book</span><span class="p">.</span><span class="na">class</span><span class="p">).</span><span class="na">where</span><span class="p">(</span><span class="s">"title"</span><span class="p">).</span><span class="na">eq</span><span class="p">(</span><span class="s">"Effective Java"</span><span class="p">).</span><span class="na">execute</span><span class="p">();</span><span class="w">   </span>
+</span></code></pre></div></td></tr></table></div></li>
+<li>Search again and check the output: 
+     <div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-61">61</a></span>
+<span class="normal"><a href="#__codelineno-13-62">62</a></span>
+<span class="normal"><a href="#__codelineno-13-63">63</a></span>
+<span class="normal"><a href="#__codelineno-13-64">64</a></span>
+<span class="normal"><a href="#__codelineno-13-65">65</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-61"><a id="__codelineno-13-61" name="__codelineno-13-61"></a><span class="w">       </span><span class="cm">/**</span>
+</span><span id="__span-13-62"><a id="__codelineno-13-62" name="__codelineno-13-62"></a><span class="cm">        * TODO: Search and List</span>
+</span><span id="__span-13-63"><a id="__codelineno-13-63" name="__codelineno-13-63"></a><span class="cm">        * Use the `template.select` method to search and print the result like you have done previously;</span>
+</span><span id="__span-13-64"><a id="__codelineno-13-64" name="__codelineno-13-64"></a><span class="cm">        * */</span>
+</span><span id="__span-13-65"><a id="__codelineno-13-65" name="__codelineno-13-65"></a><span class="w">       </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"[DDD_IN_ACTION] Searching again after deleting books: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">template</span><span class="p">.</span><span class="na">select</span><span class="p">(</span><span class="n">Book</span><span class="p">.</span><span class="na">class</span><span class="p">).</span><span class="na">where</span><span class="p">(</span><span class="s">"title"</span><span class="p">).</span><span class="na">eq</span><span class="p">(</span><span class="s">"Effective Java"</span><span class="p">).</span><span class="na">result</span><span class="p">());</span><span class="w"> </span>
+</span></code></pre></div></td></tr></table></div></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Notice we don't need to have <strong>any</strong> type of MongoDB related code, thanks to Jakarta NoSQL.</p>
+</div>
+<h4 id="testing-the-integration"><span class="enumerate-headings-plugin enumerate-heading-plugin">5.3.1.5</span> Testing the integration</h4>
+<p>If you run the application and observe a log such as the one below, you'll successfully implemented a Java solution with MongoDB persistence!</p>
+<div class="language-shell highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a>Mar<span class="w"> </span><span class="m">22</span>,<span class="w"> </span><span class="m">2023</span><span class="w"> </span><span class="m">11</span>:58:46<span class="w"> </span>AM<span class="w"> </span>org.eclipse.jnosql.mapping.document.spi.DocumentExtension<span class="w"> </span>onAfterBeanDiscovery
+</span><span id="__span-14-2"><a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a>INFO:<span class="w"> </span>Processing<span class="w"> </span>Document<span class="w"> </span>extension:<span class="w"> </span><span class="m">0</span><span class="w"> </span>databases<span class="w"> </span>crud<span class="w"> </span><span class="m">0</span><span class="w"> </span>found
+</span><span id="__span-14-3"><a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a>Mar<span class="w"> </span><span class="m">22</span>,<span class="w"> </span><span class="m">2023</span><span class="w"> </span><span class="m">11</span>:58:46<span class="w"> </span>AM<span class="w"> </span>org.eclipse.jnosql.mapping.document.spi.DocumentExtension<span class="w"> </span>onAfterBeanDiscovery
+</span><span id="__span-14-4"><a href="#__codelineno-14-4" id="__codelineno-14-4" name="__codelineno-14-4"></a>INFO:<span class="w"> </span>Processing<span class="w"> </span>repositories<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>Document<span class="w"> </span>implementation:<span class="w"> </span><span class="o">[]</span>
+</span><span id="__span-14-5"><a href="#__codelineno-14-5" id="__codelineno-14-5" name="__codelineno-14-5"></a>Mar<span class="w"> </span><span class="m">22</span>,<span class="w"> </span><span class="m">2023</span><span class="w"> </span><span class="m">11</span>:58:46<span class="w"> </span>AM<span class="w"> </span>org.jboss.weld.environment.se.WeldContainer<span class="w"> </span>fireContainerInitializedEvent
+</span><span id="__span-14-6"><a href="#__codelineno-14-6" id="__codelineno-14-6" name="__codelineno-14-6"></a>INFO:<span class="w"> </span>WELD-ENV-002003:<span class="w"> </span>Weld<span class="w"> </span>SE<span class="w"> </span>container<span class="w"> </span>e0b071e7-f20f-400b-884c-3f8b2a6635f8<span class="w"> </span>initialized
+</span><span id="__span-14-7"><a href="#__codelineno-14-7" id="__codelineno-14-7" name="__codelineno-14-7"></a>Mar<span class="w"> </span><span class="m">22</span>,<span class="w"> </span><span class="m">2023</span><span class="w"> </span><span class="m">11</span>:58:46<span class="w"> </span>AM<span class="w"> </span>com.mongodb.internal.diagnostics.logging.Loggers<span class="w"> </span>shouldUseSLF4J
+</span><span id="__span-14-8"><a href="#__codelineno-14-8" id="__codelineno-14-8" name="__codelineno-14-8"></a>WARNING:<span class="w"> </span>SLF4J<span class="w"> </span>not<span class="w"> </span>found<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>classpath.<span class="w">  </span>Logging<span class="w"> </span>is<span class="w"> </span>disabled<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span><span class="s1">'org.mongodb.driver'</span><span class="w"> </span>component
+</span><span id="__span-14-9"><a href="#__codelineno-14-9" id="__codelineno-14-9" name="__codelineno-14-9"></a>
+</span><span id="__span-14-10"><a href="#__codelineno-14-10" id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="o">[</span>DDD_IN_ACTION<span class="o">]</span><span class="w"> </span>Searching<span class="w"> </span>all<span class="w"> </span>books<span class="w"> </span>with<span class="w"> </span>title<span class="w"> </span>Effective<span class="w"> </span>Java:<span class="w"> </span><span class="o">[</span>Book<span class="o">[</span><span class="nv">isbn</span><span class="o">=</span>7eb9d1f4-df0e-44eb-97c3-896a7a80495c,<span class="w"> </span><span class="nv">title</span><span class="o">=</span>Effective<span class="w"> </span>Java,<span class="w"> </span><span class="nv">year</span><span class="o">=</span><span class="m">2012</span><span class="o">]]</span>
+</span><span id="__span-14-11"><a href="#__codelineno-14-11" id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="o">[</span>DDD_IN_ACTION<span class="o">]</span><span class="w"> </span>Searching<span class="w"> </span>again<span class="w"> </span>after<span class="w"> </span>deleting<span class="w"> </span>books:<span class="w"> </span><span class="o">[]</span>
+</span><span id="__span-14-12"><a href="#__codelineno-14-12" id="__codelineno-14-12" name="__codelineno-14-12"></a>
+</span><span id="__span-14-13"><a href="#__codelineno-14-13" id="__codelineno-14-13" name="__codelineno-14-13"></a>Mar<span class="w"> </span><span class="m">22</span>,<span class="w"> </span><span class="m">2023</span><span class="w"> </span><span class="m">11</span>:58:46<span class="w"> </span>AM<span class="w"> </span>org.jboss.weld.environment.se.WeldContainer<span class="w"> </span>shutdown
+</span><span id="__span-14-14"><a href="#__codelineno-14-14" id="__codelineno-14-14" name="__codelineno-14-14"></a>INFO:<span class="w"> </span>WELD-ENV-002001:<span class="w"> </span>Weld<span class="w"> </span>SE<span class="w"> </span>container<span class="w"> </span>e0b071e7-f20f-400b-884c-3f8b2a6635f8<span class="w"> </span>shut<span class="w"> </span>down
+</span></code></pre></div>
+<hr/>
+<h2 id="congratulations"><span class="enumerate-headings-plugin enumerate-heading-plugin">5.4</span> Congratulations!</h2>
+<p><img alt="✅" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/2705.svg" title=":white_check_mark:"/> Congratulations, you've done a great job so far! </p>
+<p>Keep it up, there's a bit more to come. <img alt="😄" class="twemoji" src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f604.svg" title=":smile:"/> Enjoy!</p>
+<hr/>
+<div class="md-source-file">
+<small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-22</span>
+</small>
+</div>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" hidden="" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"></path></svg>
+            Back to top
+          </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="Footer" class="md-footer__inner md-grid">
+<a aria-label="Previous: 3rd Action, the Movie: Establishing Boundaries and Context Mapping" class="md-footer__link md-footer__link--prev" href="../03_action/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                Previous
+              </span>
+              3rd Action, the Movie: Establishing Boundaries and Context Mapping
+            </div>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Developed with Ultimate Sophistication
+    </div>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "..", "features": ["navigation.indexes", "navigation.instant", "navigation.tracking", "navigation.prune", "toc.follow", "navigation.top", "content.code.annotate"], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+<script src="../assets/javascripts/bundle.0238f547.min.js"></script>
+</body>
+</html>
