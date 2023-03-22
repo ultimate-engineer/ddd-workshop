@@ -433,17 +433,13 @@ and snacks in order to watch the movie.</em></p>
 you probably feel comfortable when reading this text - a result of 
 the usage of ubiquitous language across business conversations and the technology scope.</p>
 <p>Now, before finishing this project's implementation, navigate through the project and notice the following details:</p>
-<ol>
-<li>
-<p>Entities such as <code>Moviegoer</code> and <code>Movie</code> are mapped with <code>org.jmolecules.ddd.annotation.@Entity</code>. How can this class setting be helpful?</p>
-</li>
-<li>
+<div class="admonition question">
+<p class="admonition-title">Entities such as <code>Moviegoer</code> and <code>Movie</code> are mapped with <code>org.jmolecules.ddd.annotation.@Entity</code>. How can this annotation be helpful?</p>
+</div>
 <p>The products sold by this movie theater are defined by the <code>Interface</code> named <code>Product</code>. 
 <div class="language-java highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">record</span> <span class="nc">Food</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">MonetaryAmount</span><span class="w"> </span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="p">{}</span>
 </span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">record</span> <span class="nc">Ticket</span><span class="w"> </span><span class="p">(</span><span class="n">Movie</span><span class="w"> </span><span class="n">movie</span><span class="p">,</span><span class="w"> </span><span class="n">MonetaryAmount</span><span class="w"> </span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
 </span></code></pre></div></p>
-</li>
-</ol>
 <p>Notice that by relying on the power of abstraction and CDI, adding a new product using the <code>Order</code> class is really simple: 
 either while writing, reading or maintaining the code.</p>
 <div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
