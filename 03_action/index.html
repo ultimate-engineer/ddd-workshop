@@ -390,9 +390,11 @@ move forward and start designing you Java service.</p>
 <h2 id="observe-and-learn"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.5</span> Observe and learn</h2>
 <ol>
 <li>Open the test class <code>expert.os.workshop.ddd.cinema.OrderTest</code>; </li>
-<li>Now evaluate the following items:</li>
+<li>Now notice the following items:<ol>
 <li>Is this test is validating the user story previously described? If not, what are your ideas to adjust it?</li>
 <li>In this unit test, we can notice the following validation:</li>
+</ol>
+</li>
 </ol>
 <div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
@@ -425,9 +427,10 @@ move forward and start designing you Java service.</p>
 <li>The <code>Moviegoer</code> needs to pay for the total amount of this order;</li>
 <li>Assures the total <code>Order</code> cost is compliant to the business rules; </li>
 </ol>
-<p>The test validates one of the paths of our storytelling: a user should be able to acquire movie theater tickets
-and snacks in order to watch the movie.</p>
-<p>Due to the domain exploration, you probably feel comfortable when reading this text - a result of 
+<p>The test validates one of the paths of our storytelling: <em>a user should be able to acquire movie theater tickets
+and snacks in order to watch the movie.</em></p>
+<p>Due to the domain exploration you've done while adjusting the errors on the domain diagram, 
+you probably feel comfortable when reading this text - a result of 
 the usage of ubiquitous language across business conversations and the technology scope.</p>
 <p>Now, before finishing this project's implementation, navigate through the project and notice the following details:</p>
 <ol>
@@ -440,16 +443,15 @@ the usage of ubiquitous language across business conversations and the technolog
 </span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="kd">public</span><span class="w"> </span><span class="kd">record</span> <span class="nc">Ticket</span><span class="w"> </span><span class="p">(</span><span class="n">Movie</span><span class="w"> </span><span class="n">movie</span><span class="p">,</span><span class="w"> </span><span class="n">MonetaryAmount</span><span class="w"> </span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
 </span></code></pre></div></p>
 </li>
-<li>
-<p>Because we're relying on OOP abstraction, in the <code>Order</code> class, adding a new product is really simple to write, understand and maintain:</p>
-</li>
 </ol>
+<p>Notice that by relying on the power of abstraction and CDI, adding a new product using the <code>Order</code> class is really simple: 
+either while writing, reading or maintaining the code.</p>
 <div class="language-java highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
 <span class="normal"><a href="#__codelineno-2-3">3</a></span>
 <span class="normal"><a href="#__codelineno-2-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">Product</span><span class="w"> </span><span class="n">product</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">//(1)</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="n">Objects</span><span class="p">.</span><span class="na">requireNonNull</span><span class="p">(</span><span class="n">product</span><span class="p">,</span><span class="s">"product is required"</span><span class="p">);</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="na">products</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">product</span><span class="p">);</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">  </span><span class="n">Objects</span><span class="p">.</span><span class="na">requireNonNull</span><span class="p">(</span><span class="n">product</span><span class="p">,</span><span class="s">"product is required"</span><span class="p">);</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="na">products</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">product</span><span class="p">);</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 <ol>
