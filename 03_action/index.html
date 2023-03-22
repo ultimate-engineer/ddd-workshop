@@ -183,16 +183,16 @@
 <nav aria-label="Practicing Domain Storytelling" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#getting-started">
-    Getting Started
+<a class="md-nav__link" href="#adjusting-the-model-to-match-the-real-user-need">
+    Adjusting the model to match the real user need
   </a>
 </li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#from-story-to-code-the-movie-service">
-    From Story to Code: the Movie service
+<a class="md-nav__link" href="#from-a-story-to-the-code-the-cinema-service">
+    From a Story to the Code: the Cinema service
   </a>
 </li>
 <li class="md-nav__item">
@@ -277,16 +277,16 @@
 <nav aria-label="Practicing Domain Storytelling" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#getting-started">
-    Getting Started
+<a class="md-nav__link" href="#adjusting-the-model-to-match-the-real-user-need">
+    Adjusting the model to match the real user need
   </a>
 </li>
 </ul>
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#from-story-to-code-the-movie-service">
-    From Story to Code: the Movie service
+<a class="md-nav__link" href="#from-a-story-to-the-code-the-cinema-service">
+    From a Story to the Code: the Cinema service
   </a>
 </li>
 <li class="md-nav__item">
@@ -361,36 +361,34 @@
 <p><strong>Business Goal:</strong> As a moviegoer, I want to go to the movie theater, buy a ticket, maybe get some popcorn and soda, and watch the chosen movie.</p>
 <hr/>
 <h2 id="practicing-domain-storytelling"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.3</span> Practicing Domain Storytelling</h2>
-<p>Use <a href="https://egon.io/">Egon</a> to visualize the existing domain map of this storytelling. </p>
-<p><strong>But wait, it looks like there's something wrong with it!</strong></p>
-<p>Luckily, you're now confident with storytelling and can help us fix this diagram and reduce potential risks on the app.</p>
-<h3 id="getting-started"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.3.1</span> Getting Started</h3>
 <ol>
 <li>Using your browser, access <a href="http://egon.io">Egon.io</a></li>
-<li>Import the diagram located under <code>ddd-workshop-labs/storytelling/03-movies.dst</code></li>
 <li>
-<p>It should look like this:</p>
+<p>Import the diagram located under <code>ddd-workshop-labs/storytelling/03-movies.dst</code></p>
+<p><strong>But wait... it looks like there's something wrong with it!</strong></p>
 <p><img alt="03-movie-domain-diagram.png" src="../images/03-movie-domain-diagram.png"/></p>
 </li>
-<li>
-<p>Complete the domain by exploring the use case, asking questions or discussing with other attendees;</p>
-</li>
 </ol>
-<p>Make sure you complete the following tasks:</p>
+<p>Luckily, we can use your help to help us fix this diagram and reduce bugs on the final application.</p>
+<h3 id="adjusting-the-model-to-match-the-real-user-need"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.3.1</span> Adjusting the model to match the real user need</h3>
+<ol>
+<li>Revisit the diagram and identify which are adjustments that must be done to have a real representation of the user's need;</li>
+<li>To explore the use case, rely on the instructor (business person representation) to ask questions to the instructor <em>or</em> discussing with other attendees;</li>
+</ol>
+<p>Make sure you pay attention to these items and meet the following requirements:</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> Some actions are certainly missing in this diagram. Which actions should be mapped for the <code>moviegoer</code> that are not represented? </li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> Describe in the diagram, the <code>sequence order</code> of each action. <ul>
-<li><em>To change a group sequence, you can double-click on the association arrow and set your input data;</em></li>
-</ul>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> Some actions are certainly missing in this diagram. (<em>Which actions should be mapped for the actors, and are not represented?</em>) </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> Describe in the diagram, the <code>sequence order</code> of each action. (<em>To change a group sequence, you can double-click on the association arrow and set your input data;</em>)</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> Are there optional items? Add a <code>text annotation</code> to highlight this characteristic. </p>
+<p><img alt="03-text-annotation-icon.png" src="../images/03-text-annotation-icon.png"/></p>
 </li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox"><span class="task-list-indicator"></span></input></label> Are there optional items? Add a <code>text annotation</code> to highlight this characteristic.
-    <img alt="03-text-annotation-icon.png" src="../images/03-text-annotation-icon.png"/></li>
 </ul>
 <p>Once you're satisfied with the domain map, and you feel like it covers the use case story accordingly, you are ready to
-start designing you Java service.</p>
-<p>Our next step is to practice the modeling of the application, matching the implementation with the domain exploration details.</p>
+move forward and start designing you Java service.</p>
+<p>Our next step is to check the modeling of the application, matching the implementation with the domain exploration details.</p>
 <hr/>
-<h2 id="from-story-to-code-the-movie-service"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.4</span> From Story to Code: the Movie service</h2>
+<h2 id="from-a-story-to-the-code-the-cinema-service"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.4</span> From a Story to the Code: the Cinema service</h2>
 <p>In the <code>ddd-workshop-labs</code> folder, locate and open the project <code>03-cinema</code> using your chosen Java IDE;</p>
 <h2 id="observe-and-learn"><span class="enumerate-headings-plugin enumerate-heading-plugin">4.5</span> Observe and learn</h2>
 <ol>
